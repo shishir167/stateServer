@@ -2,7 +2,7 @@
 
 This application creates a server at localhost:8080. The server takes in two url paramaters, longitude and latitude, and finds the state corresponding to that location.
 
-The code for server is not robust and uses Java's HttpServer library. It assumes two parameters are sent and first one is longitute and the second is latitude. The server can be made more robust using a full featured RESTful library. 
+The code for server is not robust and uses Java's HttpServer library. It assumes two parameters are sent and first one is always longitute and the second is latitude. The server can be made more robust using a full featured RESTful library. 
 
 ##### Running the Server:
 1. Navigate to `src` directory

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by shishir on 5/13/2017.
- * lib.stateServer.State has list of borders which defines the boundries of the state
+ * State has list of borders which defines the boundries of the state
  */
 public class State {
 
@@ -20,7 +20,7 @@ public class State {
         borders.add(border);
     }
 
-    public boolean checkHorizantal(Point point){
+    public boolean isLatitudeInsideState(Double latitude){
         for(Border border: borders){
             Double high = border.start.lat;
             Double low = border.end.lat;
@@ -29,14 +29,14 @@ public class State {
                 high = border.end.lat;
                 low = border.start.lat;
             }
-            if(low <= point.lat && point.lat <= high){
+            if(low <= latitude && latitude <= high){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean checkVertical(Point point){
+    public boolean isLongitudeInsideState(Double longitute){
         for(Border border: borders){
             Double high = border.start.lon;
             Double low = border.end.lon;
@@ -45,7 +45,7 @@ public class State {
                 high = border.end.lon;
                 low = border.start.lon;
             }
-            if(low <= point.lon && point.lon <= high){
+            if(low <= longitute && longitute <= high){
                 return true;
             }
         }

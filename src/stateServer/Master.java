@@ -46,16 +46,16 @@ public class Master {
             String[] parameters = answer.split("&");
             Double lat = new Double(parameters[0].split("=")[1]);
             Double lon = new Double(parameters[1].split("=")[1]);
-            System.out.println("lat: " + lat + ", lon: " + lon);
+//            System.out.println("lat: " + lat + ", lon: " + lon);
 
             State answerState = checkCoordinate(lat, lon);
             String response = "";
             if (answerState == null){
-                System.out.println("No state found with that coordinate");
+//                System.out.println("No state found with that coordinate");
                 response = "No state found with that coordinate" + "\n";
             }
             else {
-                System.out.println(answerState.name);
+//                System.out.println(answerState.name);
                 response = answerState.name + "\n";
             }
 
@@ -96,10 +96,14 @@ public class Master {
         }
     }
 
+
+    /*
+    This function finds the state corresponding to the location.
+    If a coordinate's both latitude and longitude falls insides the boundries of a State it must be in the state.
+     */
     public static State checkCoordinate(Double lat, Double lon){
-        Point testPoint = new Point(lat, lon);
         for(State state: states){
-            if(state.checkVertical(testPoint) && state.checkHorizantal(testPoint)){
+            if(state.isLongitudeInsideState(lon) && state.isLatitudeInsideState(lat)){
                 return state;
             }
         }
